@@ -26,6 +26,31 @@ batteryBanks.forEach((batteryBank) => {
   star1 += maxPair;
 });
 
+batteryBanks.forEach((batteryBank) => {
+  let batteryString = batteryBank.trim();
+  let pos = 0;
+  let largestString = "";
+
+  for (let i = 0; i < 12; i++) {
+    let remainingChars = 12 - i;
+    let maxPos = batteryString.length - remainingChars + 1;
+
+    let nextBest = "";
+    let nextBestIndex = pos;
+
+    for (let j = pos; j < maxPos; j++) {
+      if (batteryString[j] > nextBest) {
+        nextBest = batteryString[j];
+        nextBestIndex = j;
+      }
+    }
+
+    largestString += nextBest;
+    pos = nextBestIndex + 1;
+  }
+  star2 += parseInt(largestString);
+});
+
 // batteryBanks.forEach((batteryBank) => {
 //   console.log(`bank ${bankCount}`);
 //   let batteries = batteryBank.trim().split("");
