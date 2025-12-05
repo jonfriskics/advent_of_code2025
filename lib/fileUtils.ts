@@ -6,10 +6,7 @@ import * as fs from "fs/promises";
  * @param customString Optional string to use instead of reading from file
  * @returns Array of strings, split by newlines
  */
-export async function readFile(
-  filePath: string,
-  customString?: string,
-): Promise<string[]> {
+export async function readFile(filePath: string, customString?: string): Promise<string[]> {
   try {
     const content = customString ?? (await fs.readFile(filePath, "utf-8"));
     return content.trim().split("\n");
@@ -24,9 +21,9 @@ export async function readFile(
  * @param filePath Path to the file to read from
  * @returns File content as a string
  */
-export async function readFileAsString(filePath: string): Promise<string> {
+export async function readFileAsString(filePath: string, customString?: string): Promise<string> {
   try {
-    const content = await fs.readFile(filePath, "utf-8");
+    const content = customString ?? (await fs.readFile(filePath, "utf-8"));
     return content.trim();
   } catch (err) {
     console.error(`Error reading file ${filePath}:`, err);
@@ -40,10 +37,7 @@ export async function readFileAsString(filePath: string): Promise<string> {
  * @param content Content to write to the file
  * @returns True if successful, false otherwise
  */
-export async function writeFile(
-  filePath: string,
-  content: string,
-): Promise<boolean> {
+export async function writeFile(filePath: string, content: string): Promise<boolean> {
   try {
     await fs.writeFile(filePath, content, "utf-8");
     return true;
