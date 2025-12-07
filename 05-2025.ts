@@ -4,19 +4,19 @@ let star1 = 0;
 let star2 = 0;
 
 let testCase: string | undefined;
-// testCase = `
-// 3-5
-// 10-14
-// 16-20
-// 12-18
+testCase = `
+3-5
+10-14
+16-20
+12-18
 
-// 1
-// 5
-// 8
-// 11
-// 17
-// 32
-// `;
+1
+5
+8
+11
+17
+32
+`;
 
 // testCase = `
 // 3-5
